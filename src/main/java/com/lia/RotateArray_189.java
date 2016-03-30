@@ -14,10 +14,6 @@ public class RotateArray_189 {
         int[] aux = Arrays.copyOf(nums,nums.length);
 
         // O(N) space complexity
-//        for (int i = 0; i < N; i++) {
-//            aux[i] = nums[i];
-//        }
-
         // The real usable k is ( k % N )
         k = k % N;
 
@@ -73,5 +69,26 @@ public class RotateArray_189 {
         }
     }
 
+    // O(1) space complexity - in place
+    // O(N) time complexity
+    public void rotateWithFlip(int[] nums, int k) {
+        if (nums == null || nums.length ==0 || k == 0) return;
+        int n = nums.length;
+        k = k % n;
+        flip(nums, 0, n-k-1);
+        flip(nums, n-k,  n-1);
+        flip(nums, 0, n-1);
+    }
+
+    private void flip (int[] nums, int lo, int hi) {
+        while (lo < hi){
+            int tmp = nums[lo];
+            nums[lo] = nums[hi];
+            nums[hi] = tmp;
+            lo++;
+            hi--;
+        }
+
+    }
 
 }

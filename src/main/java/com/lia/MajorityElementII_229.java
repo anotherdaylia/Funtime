@@ -1,9 +1,12 @@
 package com.lia;
 
 /**
+ * Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+ * The algorithm should run in linear time and in O(1) space.
+ *
  * Created by liqu on 3/17/16.
  */
-import java.lang.reflect.Array;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
