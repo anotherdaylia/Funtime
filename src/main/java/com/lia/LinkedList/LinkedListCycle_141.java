@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.LinkedList;
 
 /**
  * Question: Given a linked list, determine if it has a cycle in it.

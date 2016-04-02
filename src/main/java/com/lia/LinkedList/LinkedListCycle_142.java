@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.LinkedList;
 
 /**
  * Question: Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
@@ -40,7 +40,7 @@ public class LinkedListCycle_142 {
             }
         }
 
-        if (hasCycle == true) {
+        if (hasCycle) {
             slow = head;
             while (slow != fast) {
                 slow = slow.next;
