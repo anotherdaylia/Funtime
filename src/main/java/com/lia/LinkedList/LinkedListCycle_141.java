@@ -23,36 +23,45 @@ public class LinkedListCycle_141 {
     Otherwise the fast pointer will run off the list first.
      */
     public boolean hasCycle(ListNode head) {
-        if (head == null) return false;
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
 
-        ListNode s = head;
-        ListNode f = head;
+        while (fastPtr != null && fastPtr.next != null) {
 
-        while (s != null && f != null) {
-            if (f.next == null) break;
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
 
-            s = s.next;
-            f = f.next.next;
-
-            if (s == f)  return true;
+            if (slowPtr == fastPtr)  return true;
         }
 
         return false;
     }
 
     public boolean hasCycleII(ListNode head) {
-        ListNode fast = head;
-        ListNode slow = head;
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
 
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        while (fastPtr != null && fastPtr.next != null) {
+            //slowPtr = slowPtr.next;
+            //fastPtr = fastPtr.next.next;
 
-            if (slow == fast)
-                return true;
+            slowPtr = move(slowPtr, 1);
+            fastPtr = move(fastPtr, 2);
+
+            if (slowPtr == fastPtr) return true;
         }
 
         return false;
+    }
+
+    // Add this funtction to make the pointer change more readable
+    private ListNode move(ListNode node, int steps) {
+        int count = 0;
+        while (count < steps){
+            node = node.next;
+            count++;
+        }
+        return node;
     }
 
     public static void main(String [ ] args) {

@@ -31,4 +31,25 @@ public class RemoveLinkedListElements_203 {
 
         return head;
     }
+
+    /*
+     * Adding a pseudo head (or pseudo tail) can handle special case (head/tail case) as general case.
+     */
+    public ListNode removeElementsII(ListNode head, int val) {
+        ListNode pseudoHead = new ListNode(Integer.MIN_VALUE);
+        pseudoHead.next = head;
+        ListNode prev = pseudoHead, cur = head;
+
+        while (cur != null) {
+            if (cur.val == val) {
+                prev.next = cur.next;
+                cur = prev.next;
+            } else {
+                prev = cur;
+                cur = cur.next;
+            }
+        }
+
+        return pseudoHead.next;
+    }
 }

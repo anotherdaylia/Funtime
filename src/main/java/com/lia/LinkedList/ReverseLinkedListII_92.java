@@ -17,20 +17,20 @@ public class ReverseLinkedListII_92 {
 
     // assume 1 ≤ m ≤ n ≤ length of list
     public ListNode reverseBetween(ListNode head, int m, int n) {
-
         ListNode prev = null, cur = head;
-        ListNode last, t, h;
         int count = 1;
 
+        // find m
         while(count < m) {
             prev = cur;
             cur = cur.next;
             count++;
         }
 
-        last = prev;
-        t = cur;
+        ListNode nodeBeforeM = prev;
+        ListNode reversedTail = cur;
 
+        // reverse linked list iteratively
         while (count <= n) {
             ListNode nextNode = cur.next;
             cur.next = prev;
@@ -39,11 +39,46 @@ public class ReverseLinkedListII_92 {
             count++;
         }
 
-        h = prev;
-        t.next = cur;
-        if (m == 1) head = h;
-        else last.next = h;
+        ListNode reversedHead = prev;
+        reversedTail.next = cur;
+        if (m == 1) head = reversedHead;
+        else nodeBeforeM.next = reversedHead;
 
         return head;
+    }
+
+    /*
+     * Adding a pseudo head (or pseudo tail) can handle special case (head/tail case) as general case.
+     */
+    public ListNode reverseBetweenII(ListNode head, int m, int n) {
+        ListNode pseudoHead = new ListNode(Integer.MIN_VALUE);
+        pseudoHead.next = head;
+        ListNode prev = null, cur = pseudoHead;
+        int count = 0;
+
+        // find m
+        while(count < m) {
+            prev = cur;
+            cur = cur.next;
+            count++;
+        }
+
+        ListNode nodeBeforeM = prev;
+        ListNode reversedTail = cur;
+
+        // reverse linked list iteratively
+        while (count <= n) {
+            ListNode nextNode = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = nextNode;
+            count++;
+        }
+
+        ListNode reversedHead = prev;
+        reversedTail.next = cur;
+        nodeBeforeM.next = reversedHead;
+
+        return pseudoHead.next;
     }
 }
