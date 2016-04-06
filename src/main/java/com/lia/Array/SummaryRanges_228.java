@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.Array;
 
 /**
  * Given a sorted integer array without duplicates, return the summary of its ranges.

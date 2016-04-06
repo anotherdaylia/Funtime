@@ -1,6 +1,5 @@
-package com.lia;
+package com.lia.Array;
 
-import java.util.Arrays;
 import org.junit.Test;
 
 /**

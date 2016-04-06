@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.Array;
 
 /**
  * Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target?

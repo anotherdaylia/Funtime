@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.Array;
 
 /**
  * Given an array of size n, find the majority element.

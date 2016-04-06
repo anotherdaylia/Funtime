@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.Array;
 
 /**
  * Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.

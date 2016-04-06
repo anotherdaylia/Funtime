@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.Array;
 
 /**
  * According to the Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular automaton devised

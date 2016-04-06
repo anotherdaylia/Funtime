@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.Array;
 
 /**
  * Given an unsorted integer array, find the first missing positive integer.

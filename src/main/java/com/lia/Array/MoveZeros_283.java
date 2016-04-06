@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.Array;
 
 /**
  * Given an array nums, write a function to move all 0's to the end of it while

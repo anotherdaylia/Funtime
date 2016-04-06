@@ -1,4 +1,4 @@
-package com.lia;
+package com.lia.StackAndQueue;
 import java.util.Stack;
 
 /**
