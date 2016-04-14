@@ -34,4 +34,30 @@ public class SortColor_75 {
         nums[a] = nums[b];
         nums[b] = tmp;
     }
+
+    // Counting sort method
+    public void sortColorsCount(int[] nums) {
+        int red = 0, white = 0, blue = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) red++;
+            else if(nums[i] == 1) white++;
+            else blue++;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (red > 0){
+                nums[i] = 0;
+                red--;
+                continue;
+            } else if (white > 0) {
+                nums[i] = 1;
+                white--;
+                continue;
+            } else if (blue > 0) {
+                nums[i] = 2;
+                blue--;
+                continue;
+            }
+        }
+    }
 }
