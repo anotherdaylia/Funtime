@@ -5,7 +5,7 @@ package com.lia;
  */
 
 import org.junit.Test;
-import com.lia.ThreeSumClosest_16;
+import com.lia.Array.ThreeSumClosest_16;
 public class ThreeSumCloset_16Test {
 
     @Test

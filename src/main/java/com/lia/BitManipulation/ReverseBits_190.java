@@ -11,7 +11,7 @@ package com.lia.BitManipulation;
  *
  * Created by liqu on 4/26/16.
  */
-public class REVERSEBITS_190 {
+public class ReverseBits_190 {
     // you need treat n as an unsigned value
     public int reverseBits(int n) {
         if (n == 0) return 0;
