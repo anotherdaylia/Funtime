@@ -43,7 +43,7 @@ public class LowestCommonAncestorBST_235 {
     /*
         If the value of both nodes p and q are smaller than root, then the common ancestor is on the left of the node
         Similar, if the value of both nodes are larger than root, then the common ancestor is on the right of the node
-        The first node whose value is in between that of p and q, that's the common ancestor.
+        The First node whose value is in between that of p and q, that's the common ancestor.
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (p.val < root.val && q.val < root.val) {

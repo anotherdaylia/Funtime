@@ -2,7 +2,7 @@ package com.lia.LinkedList;
 
 /**
  * Merge two sorted linked lists and return it as a new list.
- * The new list should be made by splicing together the nodes of the first two lists.
+ * The new list should be made by splicing together the nodes of the First two lists.
  *
  * Created by liqu on 3/29/16.
  */

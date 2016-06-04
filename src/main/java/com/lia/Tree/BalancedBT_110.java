@@ -15,7 +15,7 @@ public class BalancedBT_110 {
      3. return value
      4. helper function (if have)
       */
-    public boolean isBalanced(TreeNode root) {
+    public boolean isBalancedBF(TreeNode root) {
         // This is the base case when a node has no child.
         if (root == null) return true;
 
@@ -28,7 +28,7 @@ public class BalancedBT_110 {
 //        } else {
 //            return isBalanced(root.left) && isBalanced(root.right);
 //        }
-        return Math.abs(lheight - rheight) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+        return Math.abs(lheight - rheight) <= 1 && isBalancedBF(root.left) && isBalancedBF(root.right);
 
     }
 
@@ -37,5 +37,21 @@ public class BalancedBT_110 {
         // This is the base case when a node has no child.
         if (node == null) return 0;
         else return 1 + Math.max(height(node.left), height(node.right));
+    }
+
+
+    // Bottom Up solution
+    public boolean isBalanced(TreeNode root) {
+        return depth(root) != -1;
+    }
+
+    private int depth(TreeNode node) {
+        if (node == null) return 0;
+
+        int ldepth = depth(node.left);
+        int rdepth = depth(node.right);
+        if (ldepth == -1 || rdepth == -1) return -1;
+
+        return (Math.abs(ldepth - rdepth) <= 1) ? Math.max(ldepth, rdepth) + 1 : -1;
     }
 }

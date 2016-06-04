@@ -25,7 +25,7 @@ public class LongestSubstringWORepeatingChar_3 {
         int maxlength = 0, sublength = 0;
         int start = 0;
         for (int i = 0; i < chars.length; i++) {
-            // first occurence
+            // First occurence
             if(!posMap.containsKey(chars[i]) || posMap.get(chars[i]) == -1) {
                 posMap.put(chars[i], i); // char[i] index at i
                 sublength++;

@@ -2,7 +2,7 @@ package com.lia.StringTag;
 
 /**
  * Implement strStr().
- * Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+ * Returns the index of the First occurrence of needle in haystack, or -1 if needle is not part of haystack.
  *
  * Created by liqu on 5/7/16.
  */

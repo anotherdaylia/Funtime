@@ -13,7 +13,7 @@ package com.lia.LinkedList;
  *
  * Note:
  * The relative order inside both the even and odd groups should remain as it was in the input.
- * The first node is considered odd, the second node even and so on ...
+ * The First node is considered odd, the second node even and so on ...
  *
  * Created by liqu on 3/29/16.
  */

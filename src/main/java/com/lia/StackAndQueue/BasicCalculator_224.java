@@ -35,7 +35,7 @@ public class BasicCalculator_224 {
                 number = 0;
                 sign = -1;
             }else if(c == '('){
-                //we push the result first, then sign;
+                //we push the result First, then sign;
                 stack.push(result);
                 stack.push(sign);
                 //reset the sign and result for the value in the parenthesis

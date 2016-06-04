@@ -1,7 +1,7 @@
 package com.lia.Array;
 
 /**
- * Given an unsorted integer array, find the first missing positive integer.
+ * Given an unsorted integer array, find the First missing positive integer.
  *
  * For example,
  * Given [1,2,0] return 3,
@@ -31,7 +31,7 @@ public class FirstMissingPositive_41 {
             }
         }
 
-        // find the first missing number by comparing the number and the index
+        // find the First missing number by comparing the number and the index
         int j = 0;
         while (j < nums.length) {
             if (nums[j] != j + 1) break;

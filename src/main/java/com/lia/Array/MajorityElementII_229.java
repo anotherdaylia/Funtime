@@ -64,7 +64,7 @@ public class MajorityElementII_229 {
             }
         }
 
-        // We need to count again for the two candidates after the first loop
+        // We need to count again for the two candidates after the First loop
         count1 = 0;
         count2 = 0;
         for (int i : nums) {

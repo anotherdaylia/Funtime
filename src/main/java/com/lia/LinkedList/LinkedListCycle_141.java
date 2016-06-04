@@ -20,7 +20,7 @@ public class LinkedListCycle_141 {
     Define two pointers, slow moves one step at a time, while fast moves two step at a time.
 
     If there is a cycle, they will eventually meet.
-    Otherwise the fast pointer will run off the list first.
+    Otherwise the fast pointer will run off the list First.
      */
     public boolean hasCycle(ListNode head) {
         ListNode slowPtr = head;

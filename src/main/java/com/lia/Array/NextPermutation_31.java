@@ -34,7 +34,7 @@ public class NextPermutation_31 {
             // lowest possible order (ie, sorted in ascending order)
             rotate(nums, 0, N-1);
         } else {
-            //2. find the last number that are larger than the first number j
+            //2. find the last number that are larger than the First number j
             int j = N - 1;
             while (j > i) {
                 if (nums[j] > nums[i]) break;

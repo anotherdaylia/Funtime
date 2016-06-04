@@ -12,7 +12,7 @@ package com.lia.LinkedList;
  *
  * Note:
  * The relative order inside both the even and odd groups should remain as it was in the input.
- * The first node is considered odd, the second node even and so on ...
+ * The First node is considered odd, the second node even and so on ...
  *
  * Created by liqu on 3/29/16.
  */
@@ -44,7 +44,7 @@ public class IntersectionofTwoLinkedLists_160 {
                 for (int i = 0; i < Math.abs(step); i++) curB = curB.next;
             }
 
-            // 4. The first node share the same value is the intersect
+            // 4. The First node share the same value is the intersect
             while (curA != null && curB != null && curA.val != curB.val) {
                 curA = curA.next;
                 curB = curB.next;

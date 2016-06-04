@@ -23,7 +23,7 @@ public class SetMatrixZeros_73 {
         boolean isFirstRowZeros = false;
         boolean isFirstColZeros = false;
 
-        // check first col
+        // check First col
         for (int i = 0; i < m; i++) {
             if (matrix[i][0] == 0) {
                 isFirstColZeros = true;
@@ -31,7 +31,7 @@ public class SetMatrixZeros_73 {
             }
         }
 
-        // check first row
+        // check First row
         for (int j = 0; j < n; j++) {
             if (matrix[0][j] == 0){
                 isFirstRowZeros = true;
@@ -65,14 +65,14 @@ public class SetMatrixZeros_73 {
             }
         }
 
-        // update first row
+        // update First row
         if (isFirstRowZeros) {
             for (int j = 0; j < n; j++) {
                 matrix[0][j] = 0;
             }
         }
 
-        // update first col
+        // update First col
         if (isFirstColZeros) {
             for (int i = 0; i < m; i++) {
                 matrix[i][0] = 0;
