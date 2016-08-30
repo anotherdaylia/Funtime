@@ -1,5 +1,6 @@
 package com.lia.StringTag;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -14,26 +15,7 @@ import java.util.HashSet;
  */
 public class LongestSubstirngWoRpChars_3 {
 
-    public int lengthOfLongestSubstringSet(String s) {
-        char[] chars = s.toCharArray();
-        HashSet<Character> set = new HashSet<>();
-
-        int lo = 0, hi = 0;
-        int maxlength = 0;
-        while (lo < chars.length && hi < chars.length) {
-            if (!set.contains(chars[hi])){
-                set.add(chars[hi]);
-                hi++;
-                maxlength = Math.max(maxlength, hi - lo);
-            }else {
-                set.remove(chars[lo]);
-                lo++;
-            }
-        }
-        return maxlength;
-    }
-
-    // implemented with the template
+    // Sliding window solution that use array as a set
     public int lengthOfLongestSubstring(String s) {
         char[] chars = s.toCharArray();
         int[] map = new int[128];
@@ -54,5 +36,23 @@ public class LongestSubstirngWoRpChars_3 {
         }
         return maxLength;
     }
+
+    // O(n) run time, O(1) space
+    public int lengthOfLongestSubstringII(String s) {
+        int[] map = new int[128];
+        Arrays.fill(map, -1);
+        int max = 0, i = 0;
+
+        for (int j = 0; j < s.length(); j++) {
+            char c = s.charAt(j);
+            if (map[c] >= i) { // found repeated character in range (i,j)
+                i = map[c] + 1;
+            }
+            map[c] = j;
+            max = Math.max(max, j - i + 1);
+        }
+        return max;
+    }
+
 
 }

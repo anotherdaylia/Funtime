@@ -7,33 +7,30 @@ package com.lia.StringTag;
  * Created by liqu on 5/6/16.
  */
 public class LongestPalindormeSubstring_5 {
-    int maxLength = 0, offset = 0;
-
+    // DP solution: O(n^2) runtime, O(1) space
     public String longestPalindrome(String s) {
-        int length = s.length();
-        if (length < 2) return s;
+        int start = 0, end = 0; // substring starting point (0,0)
 
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length - 1; i++) {
-            extendPalindrome(chars, i, i); //for odd palindorme
-            extendPalindrome(chars, i, i+1); //for even palindrome
+            int len1 = extendPalindrome(chars, i, i); //with odd number of char
+            int len2 = extendPalindrome(chars, i, i+1); //with even number of char
+            int len = Math.max(len1, len2);
+            if (len > end - start) { // find longer palindrome, update start/end point
+                start =  i - (len - 1) / 2;
+                end = i + len / 2;
+            }
         }
-        return  s.substring(offset, offset + maxLength);
+        return  s.substring(start, end + 1);
     }
 
-    private void extendPalindrome(char[] chars, int lo, int hi) {
+    private int extendPalindrome(char[] chars, int lo, int hi) {
         while (lo >= 0 && hi <= chars.length - 1) {
             if (chars[lo] == chars[hi]) {
                 lo--;
                 hi++;
-            } else {
-                break;
-            }
+            } else break;
         }
-
-        if (maxLength < hi - lo - 1) {
-            maxLength = hi - lo - 1;
-            offset = lo + 1;
-        }
+        return hi - lo - 1;
     }
 }
