@@ -15,7 +15,7 @@ public class MergeSortedArray_88 {
         int[] nums1_copy = new int[m];
         System.arraycopy(nums1, 0, nums1_copy, 0, m);
 
-        // this referred to the merge sort algorithm
+        // this referred to the merge Sort algorithm
         int ix1 = 0, ix2 = 0;
         for (int i = 0; i < m + n; i++) {
             if (ix1 >= m) { nums1[i] = nums2[ix2++];}
