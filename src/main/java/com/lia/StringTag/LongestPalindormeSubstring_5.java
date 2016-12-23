@@ -7,7 +7,11 @@ package com.lia.StringTag;
  * Created by liqu on 5/6/16.
  */
 public class LongestPalindormeSubstring_5 {
-    // DP solution: O(n^2) runtime, O(1) space
+    /*
+     Extend solution: O(n^2) runtime, O(1) space
+     We observe that a palindrome mirrors around its center.
+     Therefore, a palindrome can be expanded from its center, and there are only 2n - 12n−1 such centers
+      */
     public String longestPalindrome(String s) {
         int start = 0, end = 0; // substring starting point (0,0)
 
@@ -24,6 +28,7 @@ public class LongestPalindormeSubstring_5 {
         return  s.substring(start, end + 1);
     }
 
+    // return the length of the palindrome
     private int extendPalindrome(char[] chars, int lo, int hi) {
         while (lo >= 0 && hi <= chars.length - 1) {
             if (chars[lo] == chars[hi]) {
