@@ -21,22 +21,37 @@ import java.util.Arrays;
  */
 
 public class HIndex_274 {
-    public int hIndex(int[] citations) {
-        Arrays.sort(citations);
 
-        int count = 0;
+    /* 12.25.2016
+       Time complexity: O(nlogn) + O(n)
+     */
+    public int hIndexSort(int[] citations) {
+        int n = citations.length;
         int h = 0;
-        for(int i = citations.length - 1; i >= 0; i--) {
-            count++;
-            if (citations[i] < count) {
-                if (citations[i] <= count - 1){
-                    return count - 1;
-                } else {
-                    return 0;
-                }
-            }
+        Arrays.sort(citations);
+        for (int i = n - 1; i >= 0; i--) {
+            if (citations[i] >= n - i) {
+                h = n - i;
+            } else break;
+        }
+        return h;
+    }
+
+    // Time complexity: O(n)
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        int[] map = new int[n + 1];
+
+        for (int i = 0; i < n; i++) {
+            if (citations[i] > n) map[n]++;
+            else map[citations[i]]++;
         }
 
-        return count;
+        int t = 0;
+        for (int i = n; i >= 0; i--) {
+            t += map[i];
+            if (t >= i) return i;
+        }
+        return 0;
     }
 }

@@ -1,9 +1,6 @@
 package com.lia.HashMap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given an array of strings, group anagrams together.
@@ -49,5 +46,29 @@ public class GroupAnagrams_49 {
         }
 
         return group;
+    }
+
+    // 12.24.2016
+    public List<List<String>> groupAnagramsII(String[] strs) {
+        List<List<String>> res = new ArrayList<>();
+
+        Map<String, Integer> map = new HashMap<>();
+        for (String s : strs) {
+            // sort each string
+            char[] chs = s.toCharArray();
+            Arrays.sort(chs);
+            String sorted = new String(chs);
+
+            if (map.containsKey(sorted)) {
+                int ix = map.get(sorted);
+                res.get(ix).add(s);
+            } else {
+                res.add(new ArrayList<>());
+                res.get(res.size() - 1).add(s);
+                map.put(sorted, res.size() - 1);
+            }
+        }
+
+        return res;
     }
 }

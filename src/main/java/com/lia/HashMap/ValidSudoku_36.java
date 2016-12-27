@@ -34,6 +34,7 @@ public class ValidSudoku_36 {
             }
         }
 
+        // The index of (x, y) needs attention
         for(int i = 0; i < size; i++) {
             boolean[] sqr = new boolean[size];
             for(int m = 0; m < size; m++) {

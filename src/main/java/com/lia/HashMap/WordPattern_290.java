@@ -33,10 +33,12 @@ public class WordPattern_290 {
              * or null if there was no mapping for key.
              * 2. There are two ways to convert a char to a string
              * - Character.toString(char), this internally uses the next one
-             * - StringTag.valueOf(char)
+             * - String.valueOf(char)
              * - plus operator
+             * 3. The reason to + "*" is to avoid patten.charAt(i) and words[i] are the same, which
+             * will go to the same bucket
              */
-            if (map.put(String.valueOf(pattern.charAt(i)) + "*", i) != map.put(words[i], i)) {
+            if (map.put(pattern.charAt(i) + "*", i) != map.put(words[i], i)) {
                 return false;
             }
         }

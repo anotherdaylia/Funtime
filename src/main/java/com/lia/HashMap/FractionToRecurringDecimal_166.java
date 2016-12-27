@@ -28,6 +28,8 @@ public class FractionToRecurringDecimal_166 {
         if (numerator < 0 && denominator > 0 || numerator > 0 && denominator < 0) {
             isNegative = true;
         }
+
+        // the conversion (long) is needed
         long num = Math.abs((long)numerator);
         long den = Math.abs((long)denominator);
         long whole = num / den;

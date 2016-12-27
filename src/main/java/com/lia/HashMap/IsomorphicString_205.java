@@ -1,6 +1,7 @@
 package com.lia.HashMap;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Given two strings s and t, determine if they are isomorphic.
@@ -19,25 +20,6 @@ import java.util.HashMap;
  */
 
 public class IsomorphicString_205 {
-    public boolean isIsomorphicArr(String s, String t) {
-        HashMap<Character, Character> map = new HashMap<>();
-        if(s.length() != t.length()) return false;
-        // data indicates that converting to char array is faster than charAt()
-        char[] s_arr = s.toCharArray();
-        char[] t_arr = t.toCharArray();
-
-        for(int i = 0; i < s_arr.length; i++) {
-            if(map.containsKey(s_arr[i])){
-                if(map.get(s_arr[i]) != (t_arr[i])) return false;
-            } else {
-                // case: s = "ab", t = "aa"
-                if(map.containsValue(t_arr[i])) return false;
-                map.put(s_arr[i], t_arr[i]);
-            }
-
-        }
-        return true;
-    }
 
     public boolean isIsomorphic(String s, String t) {
         HashMap<Character, Character> map = new HashMap<>();
@@ -54,6 +36,17 @@ public class IsomorphicString_205 {
                 map.put(s.charAt(i), t.charAt(i));
             }
 
+        }
+        return true;
+    }
+
+    public boolean isIsomorphicII(String s, String t) {
+        if (s.length() != t.length()) return false;
+
+        Map<Character, Integer> map_s = new HashMap<>();
+        Map<Character, Integer> map_t = new HashMap<>();
+        for (Integer i = 0; i < s.length(); i++) {
+            if (map_s.put(s.charAt(i), i) != map_t.put(t.charAt(i), i)) return false;
         }
         return true;
     }
