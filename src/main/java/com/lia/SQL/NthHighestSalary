@@ -1,0 +1,41 @@
+/*
+Write a SQL query to get the nth highest salary from the Employee table.
+
++----+--------+
+| Id | Salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
++----+--------+
+For example, given the above Employee table, the nth highest salary where n = 2 is 200.
+If there is no nth highest salary, then the query should return null.
+
+12.31.2016
+ */
+
+
+/*
+If you want to get the employees (could be more than one)who has the Nth highest salary,
+you can use the following solutions.
+Read more: http://javarevisited.blogspot.com/2016/01/4-ways-to-find-nth-highest-salary-in.html#ixzz4UUBxwghs
+
+1. correlated subquery - slowest
+Explanation :
+The distinct keyword is there to deal with duplicate salaries in the table.
+In order to find the Nth highest salary, we are only considering unique salaries.
+Highest salary means no salary is higher than it, Second highest means only one salary is higher than it,
+3rd highest means two salaries are higher than it, similarly Nth highest salary means N-1 salaries are higher than it.
+
+ */
+SELECT name, salary
+FROM Employee e1
+WHERE N-1 = (SELECT COUNT(DISTINCT salary)
+             FROM Employee e2
+             WHERE e2.salary > e1.salary)
+
+
+/*
+Query only work in MySQL database.
+ */
+SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC LIMIT N, 1

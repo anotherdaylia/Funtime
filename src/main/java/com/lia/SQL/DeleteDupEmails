@@ -1,0 +1,36 @@
+/*
+Write a SQL query to delete all duplicate email entries in a table named Person, keeping only unique emails based on its smallest Id.
+
++----+------------------+
+| Id | Email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
++----+------------------+
+Id is the primary key column for this table.
+For example, after running your query, the above Person table should have the following rows:
+
++----+------------------+
+| Id | Email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
++----+------------------+
+
+12.31.2016
+ */
+
+
+/* Min() solution */
+where we try this clause :
+
+delete from Person
+where id not in (select min(id) from Person group by email)
+
+you will be noted " You can't specify target table 'Person' for update in FROM clause ",
+The solution is using a middle table with select clause:
+
+delete from Person
+where Id NOT IN (select t.id from
+                (select min(Id) as id from Person group by Email) t)
