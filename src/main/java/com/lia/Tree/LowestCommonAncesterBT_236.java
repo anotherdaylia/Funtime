@@ -13,7 +13,6 @@ import java.util.LinkedList;
  */
 public class LowestCommonAncesterBT_236 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-
         LinkedList<TreeNode> pathP = new LinkedList<>();
         LinkedList<TreeNode> pathQ = new LinkedList<>();
         findNode(root, p, pathP);
@@ -29,7 +28,7 @@ public class LowestCommonAncesterBT_236 {
 
     private boolean findNode(TreeNode node, TreeNode target, LinkedList<TreeNode> list) {
         if (node == null) return false;
-        if (node == target){
+        if (node == target) {
             list.add(node);
             return true;
         } else {
@@ -43,7 +42,49 @@ public class LowestCommonAncesterBT_236 {
             if (inRight) {
                 list.add(node);
                 return true;
-            }else return false;
+            } else return false;
         }
     }
+
+
+    /*
+    Other's recursive solution
+     */
+    public TreeNode lowestCommonAncestorRec(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null) return null;
+        if(root == p || root == q) return root;
+        TreeNode left = lowestCommonAncestorRec(root.left, p, q);
+        TreeNode right = lowestCommonAncestorRec(root.right, p, q);
+        return left != null && right != null ? root :
+                                               left == null ? right : left;
+    }
+
+    /*
+    Lowest common ancestor in N-ary tree
+
+    TreeNode LCA(TreeNode a, TreeNode b, TreeNode root)
+	{
+		if(a == root || b == root)
+			return root;
+
+		int count = 0;
+        TreeNode temp = null;
+
+		for(TreeNode iter : root.children)
+		{
+            TreeNode res = LCA(a, b, iter);
+			if(res != null)
+			{
+				count++;
+				temp = res;
+			}
+		}
+
+        if(count == 0) return null;
+		if(count == 2) return root;
+
+		return temp;
+	}
+     */
+
 }

@@ -10,6 +10,8 @@ package com.lia.Array;
  */
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MajorityElement_169 {
     static int element = -1;
@@ -35,5 +37,17 @@ public class MajorityElement_169 {
             element = nums[nums.length - 1];
         }
         return element;
+    }
+
+    // Time Complexity: O(n), n is the number of element in nums
+    // Space Complexity: O(n)
+    public int majorityElementHT(int[] nums) {
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+            if (map.get(num) > n / 2) return num;
+        }
+        return nums[0];
     }
 }

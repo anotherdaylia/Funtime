@@ -41,6 +41,7 @@ public class FourSum_18 {
                         while (lo < hi && nums[hi + 1] == nums[hi]) hi--;
                     }
                 }
+                // avoid the duplicate result
                 while (j < nums.length - 2 && nums[j + 1] == nums[j]) j++;
             }
             // avoid the duplicate result

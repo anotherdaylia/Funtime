@@ -15,8 +15,7 @@ package com.lia.Tree;
  Q: What if every node contains negative value?
  A: Then you should return the single node value that is the least negative.
  Q: Does the maximum path have to go through the root node?
- A: Not necessarily. For example, the below tree yield 6
- as the maximum path sum and does not go through root.
+ A: Not necessarily. For example, the below tree yield 6 as the maximum path sum and does not go through root.
  *
  * Created by liqu on 9/21/16.
  */
@@ -42,6 +41,7 @@ public class BTMaxPathSum_124 {
 
     private int findMaxSum(TreeNode node) {
         if (node == null) return 0;
+
         // find the sum of one way path
         int lsum = findMaxSum(node.left);
         int rsum = findMaxSum(node.right);
@@ -53,5 +53,33 @@ public class BTMaxPathSum_124 {
         // - do not include this subtree as part of the parent node
         int sum = Math.max(lsum, rsum) + node.val;
         return sum > 0 ? sum : 0;
+    }
+
+
+    /*
+    Solution2:
+    A minor change at getPathSum() method, which I think make more sense.
+     */
+    private int maxSum;
+
+    public int maxPathSumII(TreeNode root) {
+        maxSum = Integer.MIN_VALUE;
+        getPathSum(root);
+        return maxSum;
+    }
+
+    /*
+    if left or right is negative, then make it 0 -
+    meaning do not include this subtree as part of the path
+     */
+    private int getPathSum(TreeNode node) {
+        if (node == null) return 0;
+
+        int left = Math.max(0, getPathSum(node.left));
+        int right = Math.max(0, getPathSum(node.right));
+
+        maxSum = Math.max(maxSum, left + right + node.val);
+
+        return Math.max(left, right) + node.val;
     }
 }

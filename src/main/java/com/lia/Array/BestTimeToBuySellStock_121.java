@@ -34,4 +34,17 @@ public class BestTimeToBuySellStock_121 {
         }
         return profit;
     }
+
+    public int maxProfitDP(int[] prices) {
+        int n = prices.length;
+        if (n < 2) return 0;
+
+        int low = prices[0], profit = 0;
+        for (int i = 1; i < n; i++) {
+            int diff = prices[i] - low;
+            if (diff > profit) profit = diff;
+            if (prices[i] < low) low = prices[i];
+        }
+        return profit;
+    }
 }

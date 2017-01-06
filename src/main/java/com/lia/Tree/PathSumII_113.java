@@ -1,6 +1,7 @@
 package com.lia.Tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -41,5 +42,27 @@ public class PathSumII_113 {
         }
         // Making sure to clear the left overs and make sure the stack is ready for the next recursive call.
         path.pop();
+    }
+
+    // 1.1.2017, use LinkedList as a stack
+    public List<List<Integer>> pathSumII(TreeNode root, int sum) {
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<Integer> path = new LinkedList<>();
+        getPath(root, sum, path, res);
+        return res;
+    }
+
+    private void getPath(TreeNode node, int sum, LinkedList<Integer> path, List<List<Integer>> res) {
+        if (node == null) return;
+        path.add(node.val);
+
+        // base case: if node is a leaf
+        if (node.left == null && node.right == null) {
+            if (node.val == sum) res.add(new ArrayList<>(path));
+        } else {
+            getPath(node.left, sum - node.val, path, res);
+            getPath(node.right, sum - node.val, path, res);
+        }
+        path.remove(path.size() - 1);
     }
 }

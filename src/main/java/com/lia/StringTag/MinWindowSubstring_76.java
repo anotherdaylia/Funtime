@@ -21,33 +21,35 @@ public class MinWindowSubstring_76 {
     // https://leetcode.com/discuss/72701/here-10-line-template-that-can-solve-most-substring-problems
 
     public String minWindow(String s, String t) {
-        int[] map = new int[128];
         char[] charS = s.toCharArray();
-        char[] charT = t.toCharArray();
-        for (char c : charT) map[c]++;
+        int len = Integer.MAX_VALUE; // the length of min window
 
-        int counter = charT.length, minLen = Integer.MAX_VALUE;
-        int start = 0, end = 0, head = 0;
-        while (end < charS.length) {
-            if (map[charS[end]] > 0) { counter--;}
-            map[charS[end]]--;
-            end++;
+        // initialize chars in t to tMap
+        int[] map = new int[128];
+        for (char c : t.toCharArray()) map[c]++;
+
+        int head = 0; // the start of min window
+        int lo = 0, hi = 0; // pointers to the head/tail of min window
+        int counter = t.length();
+        while (hi < s.length()) {
+            if (map[charS[hi]] > 0) counter--;
+            map[charS[hi]]--;
+            hi++;
 
             while (counter == 0) {
-                if (end - start < minLen) {
-                    head = start;
-                    minLen = end - start;
+                if (len > hi - lo) {
+                    len = hi - lo;
+                    head = lo;
                 }
 
-                if (map[charS[start]] == 0) {
-                    counter++;
-                }
-                map[charS[start]]++;
-                start++;
+                /* we visited chars in S but not in T when looping with hi
+                   those chars in the map are negative numbers */
+                if (map[charS[lo]] == 0) counter++;
+                map[charS[lo]]++;
+                lo++;
             }
         }
-
-        return (minLen == Integer.MAX_VALUE) ? "" : s.substring(head, head + minLen);
+        return (len == Integer.MAX_VALUE) ? "" : s.substring(head, head + len);
     }
 
 }

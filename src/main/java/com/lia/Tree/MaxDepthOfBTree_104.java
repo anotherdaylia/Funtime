@@ -25,4 +25,12 @@ public class MaxDepthOfBTree_104 {
         if (node.right != null) depthRight = findDepth(node.right, depth, count + 1);
         return Math.max(depthLeft, depthRight);
     }
+
+    /* depth is the same as height, so as the calculation method
+       11/11/16
+     */
+    public int mDepth(TreeNode root) {
+        if (root == null) return 0;
+        return Math.max(mDepth(root.left), mDepth(root.right)) + 1;
+    }
 }

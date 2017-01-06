@@ -28,7 +28,10 @@ public class BalancedBT_110 {
 //        } else {
 //            return isBalanced(root.left) && isBalanced(root.right);
 //        }
-        return Math.abs(lheight - rheight) <= 1 && isBalancedBF(root.left) && isBalancedBF(root.right);
+
+        return Math.abs(lheight - rheight) <= 1 && // check if this level is balanced
+                isBalancedBF(root.left) && // check if next level is balanced
+                isBalancedBF(root.right);
 
     }
 

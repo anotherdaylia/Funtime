@@ -31,4 +31,28 @@ public class BTRightSideView_199 {
         }
         return result;
     }
+
+    /*
+    11/11/16
+     */
+    public List<Integer> rightSideViewII(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) return result;
+
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        TreeNode rightmost = root;
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (node.left != null) queue.add(node.left);
+            if (node.right != null) queue.add(node.right);
+            if (node == rightmost) {
+                result.add(node.val);
+                if (queue.size() > 0) {
+                    rightmost = queue.get(queue.size() - 1);
+                }
+            }
+        }
+        return result;
+    }
 }

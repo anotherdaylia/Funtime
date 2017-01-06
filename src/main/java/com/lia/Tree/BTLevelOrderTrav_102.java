@@ -59,4 +59,33 @@ public class BTLevelOrderTrav_102 {
 
         return result;
     }
+
+    /* 11-11-2016
+       Use LinkedList as queue when declaring a queue type
+     */
+    public List<List<Integer>> levelOrderBFSII(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
+
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        TreeNode rightmost = root;
+        queue.add(root);
+        List<Integer> level = new ArrayList<>();
+        while(!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            level.add(node.val);
+
+            if (node.left != null) queue.add(node.left);
+            if (node.right != null) queue.add(node.right);
+
+            if (node == rightmost) { // reach the end of a level
+                res.add(new ArrayList<>(level));
+                if (queue.size() > 0) {
+                    rightmost = queue.get(queue.size() - 1);
+                }
+                level.clear();
+            }
+        }
+        return res;
+    }
 }
