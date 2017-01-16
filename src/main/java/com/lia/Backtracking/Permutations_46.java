@@ -20,6 +20,11 @@ import java.util.List;
  * Created by liqu on 6/21/16.
  */
 public class Permutations_46 {
+
+    /*
+     Time Complexity: O(N!) N factorial
+     Space Complexity: O(n) excluding result, O(n!) including result
+      */
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         permute(result, new ArrayList<>(), nums, 0);

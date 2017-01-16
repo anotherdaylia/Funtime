@@ -1,8 +1,6 @@
 package com.lia.Backtracking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given a collection of numbers that might contain duplicates, return all possible unique permutations.
@@ -18,6 +16,13 @@ import java.util.List;
  * Created by liqu on 6/21/16.
  */
 public class PermutationsII_47 {
+    /*
+    It's looking for permutation - the input's order does not matter.
+    The idea is not use the same number again at the same level -
+        . skip nums[i] if nums[i] == nums[i-1]
+        . to determine if they at at the sam level, nums[i - 1] is not visited.
+        . visited[] == true is used in the next levels.
+     */
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         boolean[] used = new boolean[nums.length];
@@ -42,5 +47,38 @@ public class PermutationsII_47 {
             list.remove(list.size()-1);
             used[i] = false;
         }
+    }
+
+
+    /*
+    My solution use Set to store the used element at each level.
+     */
+    private List<List<Integer>> res = new ArrayList<>();
+
+    public List<List<Integer>> permuteUniqueMine(int[] nums) {
+        boolean[] visited = new boolean[nums.length];
+        generate(nums, visited, new ArrayList<>(), 0);
+        return res;
+    }
+
+    private void generate(int[] nums, boolean[] visited, List<Integer> perm, int k) {
+        // base case
+        if (k == nums.length) res.add(new ArrayList<>(perm));
+
+        Set<Integer> set = new HashSet<>(); // element visited at this level
+        // rec case
+        for (int i = 0; i < nums.length; i++) {
+            if (!visited[i]) {
+                if (set.contains(nums[i])) continue;
+                else set.add(nums[i]);
+
+                visited[i] = true;
+                perm.add(nums[i]);
+                generate(nums, visited, perm, k + 1);
+                visited[i] = false;
+                perm.remove(perm.size() - 1);
+            }
+        }
+
     }
 }
