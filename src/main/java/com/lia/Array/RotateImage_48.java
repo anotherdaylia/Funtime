@@ -49,4 +49,33 @@ public class RotateImage_48 {
         int[][] matrix = {{1, 2}, {3, 4}};
     }
 
+    /*
+    1/2017
+     */
+    public void rotateII(int[][] matrix) {
+        int n = matrix.length;
+
+        // mirror upside down
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n / 2; i++) {
+                swap(matrix, i, j, n - i - 1, j);
+            }
+        }
+
+        // transpose with diagnal
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (i != j) {
+                    swap(matrix, i, j, j, i);
+                }
+            }
+        }
+
+    }
+
+    private void swap(int[][] matrix, int r1, int c1, int r2, int c2) {
+        int tmp = matrix[r1][c1];
+        matrix[r1][c1] = matrix[r2][c2];
+        matrix[r2][c2] = tmp;
+    }
 }
