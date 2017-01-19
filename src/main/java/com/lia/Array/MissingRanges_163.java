@@ -27,7 +27,7 @@ public class MissingRanges_163 {
     public List<String> findMissingRanges(int[] vals, int start, int end) {
         List<String> ranges = new ArrayList<>();
         int prev = start - 1;
-        for (int i = 0; i < vals.length; i++) {
+        for (int i = 0; i <= vals.length; i++) {
             int cur = (i == vals.length) ? end + 1 : vals[i];
             if (cur - prev >= 2) {
                 ranges.add(getRanges(prev + 1, cur - 1));

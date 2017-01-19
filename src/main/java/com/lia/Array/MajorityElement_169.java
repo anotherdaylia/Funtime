@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MajorityElement_169 {
+    // time complexity: O(nlogn), space complexity: O(1)
     static int element = -1;
-
     public int majorityElementSort(int[] nums) {
         Arrays.sort(nums);
         if (nums.length == 1) { return nums[0];}

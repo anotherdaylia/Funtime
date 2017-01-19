@@ -93,7 +93,7 @@ public class GameofLife_289 {
         for (int x = 0; x < m; x++) {
             for (int y = 0; y < n; y++) {
                 // the tens digit stores the live status
-                // the unit digit stores the life point (which woundn't be greater than 8)
+                // the unit digit stores the life point (which wouldn't be greater than 8)
                 board[x][y] = 10 * board[x][y];
             }
         }
